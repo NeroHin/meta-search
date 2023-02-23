@@ -2,7 +2,7 @@ import requests
 from typing import Optional
 import json
 from fastapi import FastAPI
-from duckduckgo_search import ddg
+from duckduckgo_search import ddg 
 
 # create a FastAPI instance
 app = FastAPI()
