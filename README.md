@@ -1,10 +1,10 @@
-# meta-search
+# Meta Search Engine
 Meta-search engine: dispatch the user query to several search engines at the same time, collect and merge the results into one list for the user.
-# scope
-1. Homework: Develop a meta-search engine that responds to user queries with combined search results from a few search engines.
+![Meta Search Engine](/images/what's-meta-search-engine.png)
+## Scope
+Homework: Develop a meta-search engine that responds to user queries with combined search results from a few search engines.
 
 # HW requirements
-
 
 - Using input component to get  query
 
@@ -17,8 +17,11 @@ Meta-search engine: dispatch the user query to several search engines at the sam
 
 ## Tech stack
 1. API Framework: FastAPI
-2. Search Engine: Google, Baidu, DuckDuckGo
+2. Search Engine: Google CSE, WebSearch(RAPIDS), DuckDuckGo
 3. Frontend: React
+
+## Project architecture
+![Project architecture](./images/HW-2-flowchart.png)
 
 
 # How to run
