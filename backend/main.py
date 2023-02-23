@@ -4,7 +4,8 @@ import requests
 from typing import Optional
 import json
 from fastapi import FastAPI
-from duckduckgo_search import ddg
+import uvicorn
+
 
 # create a FastAPI instance
 app = FastAPI()
@@ -73,12 +74,18 @@ def get_top_web_search_result(keyword: Optional[str], top_number: int = 3):
     return web_search_result_title, web_search_result_link, web_search_result_description
 
 
+
+
 @app.get('/search/{keyword}')
 def search(keyword: str):
 
-    ddg_top_title, ddg_top_link, ddg_top_description = get_top3_ddg_result(
+    ddg_top_title, ddg_top_link, ddg_top_description = get_top_ddg_result(
         keyword=keyword)
-    web_search_result_title, web_search_result_link, web_search_result_description = get_top3_web_search_result(
+    web_search_result_title, web_search_result_link, web_search_result_description = get_top_web_search_result(
         keyword=keyword)
 
     return {'keyword': keyword, 'ddg_top_title': ddg_top_title, 'ddg_top_link': ddg_top_link, 'ddg_top_description': ddg_top_description, 'web_search_result_title': web_search_result_title, 'web_search_result_link': web_search_result_link, 'web_search_result_description': web_search_result_description}
+
+if __name__ == '__main__':
+
+    uvicorn.run(app, host='0.0.0.0')

@@ -7,7 +7,7 @@ Homework: Develop a meta-search engine that responds to user queries with combin
 # HW requirements
 
 - Using input component to get  query
-
+ 
 - three search engines: Google, Baidu, DuckDuckGo
 
 ## Bonus
