@@ -16,9 +16,11 @@ Homework: Develop a meta-search engine that responds to user queries with combin
 - 串 Chat-GPT （Bonus）
 
 ## Tech stack
+![Tech stack](./images/tech-stack.png)
 1. API Framework: FastAPI
 2. Search Engine: Google CSE, WebSearch(RAPIDS), DuckDuckGo
 3. Frontend: React
+
 
 ## Project architecture
 ![Project architecture](./images/HW-2-flowchart.png)
