@@ -65,13 +65,12 @@ def get_top_web_search_result(keyword: Optional[str], top_number: int = 3):
 
     '''
 
-    conn = http.client.HTTPSConnection(
-        "contextualwebsearch-websearch-v1.p.rapidapi.com")
+    conn = http.client.HTTPSConnection("contextualwebsearch-websearch-v1.p.rapidapi.com")
 
     headers = {
-        'X-RapidAPI-Key': f"{ RAPIDS_API_KEY }",
+        'X-RapidAPI-Key': f"{ RAPIDS_API_KEY}",
         'X-RapidAPI-Host': "contextualwebsearch-websearch-v1.p.rapidapi.com"
-    }
+        }
 
     conn.request(
         "GET", f"/api/Search/WebSearchAPI?q={ keyword }&pageNumber=1&pageSize={ top_number }&autoCorrect=true", headers=headers)
