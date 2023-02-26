@@ -1,19 +1,30 @@
 import { useState } from 'react';
-import SearchBar from './SearchBar'
-import DisplayResult from './DisplayResult'
+import SearchBar from './SearchBar';
+import DisplayResult from './DisplayResult';
+
+interface Result {
+  title: string[];
+  description: string[];
+  link: string[];
+}
 
 function App() {
-  const [results, setResults] = useState([]);
+  const [results, setResults] = useState<Result[]>([]);
 
   const handleSearch = (searchResults: any) => {
-    setResults(searchResults);
+    const formattedResults = Object.values(searchResults).map((result: any) => ({
+      title: result.title,
+      description: result.description,
+      link: result.link,
+    }));
+    setResults(formattedResults);
   };
-
+  
   return (
     <div>
       <SearchBar onSearch={handleSearch} />
-      <DisplayResult results={results} />
-    </div>
+    <DisplayResult results={results} />
+  </div>
   );
 }
 
