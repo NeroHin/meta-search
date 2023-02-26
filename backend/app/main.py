@@ -7,6 +7,15 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 import uvicorn
 import urllib.parse
+from dotenv import load_dotenv
+import os
+
+# load the .env file
+load_dotenv()
+
+RAPIDS_API_KEY = os.getenv("RAPIDS_API_KEY")
+GOOGLE_API_KEY = str(os.getenv("GOOGLE_API_KEY"))
+GOOGLE_SEARCH_ENGINE_ID = str(os.getenv("GOOGLE_SEARCH_ENGINE_ID"))
 
 # create a FastAPI instance
 app = FastAPI()
@@ -60,7 +69,7 @@ def get_top_web_search_result(keyword: Optional[str], top_number: int = 3):
         "contextualwebsearch-websearch-v1.p.rapidapi.com")
 
     headers = {
-        'X-RapidAPI-Key': "416132865dmshcd8a00c90d4dc07p13519ajsn32f2dc6b7525",
+        'X-RapidAPI-Key': f"{ RAPIDS_API_KEY }",
         'X-RapidAPI-Host': "contextualwebsearch-websearch-v1.p.rapidapi.com"
     }
 
@@ -86,9 +95,9 @@ def get_top_web_search_result(keyword: Optional[str], top_number: int = 3):
 def get_top_google_search_result(keyword: Optional[str], top_number: int = 3):
 
     # get the API KEY here: https://developers.google.com/custom-search/v1/overview
-    API_KEY = "AIzaSyAEltei7_fvI0S1CIxyhg_4QMBgPzcdtlk"
+    API_KEY = GOOGLE_API_KEY
     # get your Search Engine ID on your CSE control panel
-    SEARCH_ENGINE_ID = "13c5e1a0875b947ba"
+    SEARCH_ENGINE_ID = GOOGLE_SEARCH_ENGINE_ID
 
     # using the first page
     page = 1
