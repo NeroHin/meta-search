@@ -35,6 +35,9 @@ app.add_middleware(
 def read_root():
     return {'Hello: World'}
 
+@app.get('/engine')
+def read_engine():
+    return {'engine': ['duckduckgo', 'web_search', 'google_search']}
 
 async def get_top_ddg_result(keyword: Optional[str], top_number: int = 3):
     '''
