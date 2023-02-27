@@ -4,7 +4,7 @@ interface Props {
   onSearch: (results: any) => void;
 }
 
-const url: string = 'http://0.0.0.0:8087'
+const url: string = 'http://0.0.0.0:8000'
 const api: string = '/search/'
 
 
