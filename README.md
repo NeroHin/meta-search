@@ -30,8 +30,8 @@ Homework: Develop a meta-search engine that responds to user queries with combin
 1. Clone the repo
 2. Install dependencies
    - Backend: `pip install -r requirements.txt`
-   - Frontend: `cd frontend && npm install`
+   - Frontend: `cd frontend/wrdu-hw-2-frontend && npm install`
 3. Run the backend
    - `uvicorn main:app --reload`
 - 4. Run the frontend
-   - `cd frontend && npm start`
+   - `cd frontend/wrdu-hw-2-frontend && npm dev || npm start`
