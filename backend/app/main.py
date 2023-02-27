@@ -9,6 +9,7 @@ import uvicorn
 import urllib.parse
 from dotenv import load_dotenv
 import os
+import asyncio
 
 # load the .env file
 load_dotenv()
@@ -29,12 +30,13 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+
 @app.get('/')
 def read_root():
     return {'Hello: World'}
 
 
-def get_top_ddg_result(keyword: Optional[str], top_number: int = 3):
+async def get_top_ddg_result(keyword: Optional[str], top_number: int = 3):
     '''
         input: keyword, top_number
         process: get top_number of ddg search result
@@ -47,17 +49,15 @@ def get_top_ddg_result(keyword: Optional[str], top_number: int = 3):
     ddg_top = ddg_result[:top_number]
     ddg_top_title = []
     ddg_top_link = []
-    ddg_top_description = []
 
     for result in ddg_top:
         ddg_top_title.append(result['title'])
         ddg_top_link.append(result['href'])
-        ddg_top_description.append(result['body'])
 
-    return ddg_top_title, ddg_top_link, ddg_top_description
+    return ddg_top_title, ddg_top_link
 
 
-def get_top_web_search_result(keyword: Optional[str], top_number: int = 3):
+async def get_top_web_search_result(keyword: Optional[str], top_number: int = 3):
     '''
         input: keyword, top_number
         process: get top_number of web search result
@@ -65,12 +65,13 @@ def get_top_web_search_result(keyword: Optional[str], top_number: int = 3):
 
     '''
 
-    conn = http.client.HTTPSConnection("contextualwebsearch-websearch-v1.p.rapidapi.com")
+    conn = http.client.HTTPSConnection(
+        "contextualwebsearch-websearch-v1.p.rapidapi.com")
 
     headers = {
         'X-RapidAPI-Key': f"{ RAPIDS_API_KEY}",
         'X-RapidAPI-Host': "contextualwebsearch-websearch-v1.p.rapidapi.com"
-        }
+    }
 
     conn.request(
         "GET", f"/api/Search/WebSearchAPI?q={ keyword }&pageNumber=1&pageSize={ top_number }&autoCorrect=true", headers=headers)
@@ -81,17 +82,15 @@ def get_top_web_search_result(keyword: Optional[str], top_number: int = 3):
 
     web_search_result_title = []
     web_search_result_link = []
-    web_search_result_description = []
 
     for result in search_result:
         web_search_result_title.append(result['title'])
         web_search_result_link.append(result['url'])
-        web_search_result_description.append(result['description'])
 
-    return web_search_result_title, web_search_result_link, web_search_result_description
+    return web_search_result_title, web_search_result_link
 
 
-def get_top_google_search_result(keyword: Optional[str], top_number: int = 3):
+async def get_top_google_search_result(keyword: Optional[str], top_number: int = 3):
 
     # get the API KEY here: https://developers.google.com/custom-search/v1/overview
     API_KEY = GOOGLE_API_KEY
@@ -112,34 +111,32 @@ def get_top_google_search_result(keyword: Optional[str], top_number: int = 3):
     # initialize the result lists
     google_result_title = []
     google_result_link = []
-    google_result_description = []
 
     # select the title, link and snippet with top_number
     for item in search_items[:top_number]:
         google_result_title.append(item["title"])
         google_result_link.append(item["link"])
-        google_result_description.append(item["snippet"].replace("\xa0", ""))
 
-    return google_result_title, google_result_link, google_result_description
+    return google_result_title, google_result_link
 
 
 @app.get('/search/{keyword}')
-def search(keyword: str):
-    
+async def search(keyword: str):
+
     # encode the keyword with utf-8
-    
+
     keyword = urllib.parse.quote(keyword)
 
-    ddg_result_title, ddg_result_link, ddg_result_description = get_top_ddg_result(
+    ddg_result_title, ddg_result_link = await get_top_ddg_result(
         keyword=keyword)
-    web_search_result_title, web_search_result_link, web_search_result_description = get_top_web_search_result(
+    web_search_result_title, web_search_result_link = await get_top_web_search_result(
         keyword=keyword)
-    google_result_title, google_result_link, google_result_description = get_top_google_search_result(
+    google_result_title, google_result_link = await get_top_google_search_result(
         keyword=keyword)
 
-    return {"duckduckgo": {"title": ddg_result_title, "link": ddg_result_link, "description": ddg_result_description},
-            "web_search": {"title": web_search_result_title, "link": web_search_result_link, "description": web_search_result_description},
-            "google_search": {"title": google_result_title, "link": google_result_link, "description": google_result_description}}
+    return {"duckduckgo": {"title": ddg_result_title, "link": ddg_result_link},
+            "web_search": {"title": web_search_result_title, "link": web_search_result_link},
+            "google_search": {"title": google_result_title, "link": google_result_link}}
 
 
 if __name__ == '__main__':
