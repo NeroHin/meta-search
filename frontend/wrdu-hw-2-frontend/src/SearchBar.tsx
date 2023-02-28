@@ -6,13 +6,14 @@ interface Props {
 
 const url: string = 'http://0.0.0.0:8000'
 const api: string = '/search/'
+const version: string = '/api/v1'
 
 
 const SearchBar: React.FC<Props> = ({ onSearch }) => {
   const [searchText, setSearchText] = useState('');
 
   const handleSearch = async () => {
-    const response = await fetch(url + api + searchText); //http://0.0.0.0:8087/search/${searchText}
+    const response = await fetch(url + version + api + searchText); //http://0.0.0.0:8000/search/${searchText}
     const results = await response.json();
     onSearch(results);
   };

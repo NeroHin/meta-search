@@ -33,9 +33,9 @@ app.add_middleware(
 
 @app.get('/')
 def read_root():
-    return {'Hello: World'}
+    return {'Welcome': 'to the search engine API, Author: @NeroHin'}
 
-@app.get('/engine')
+@app.get('/api/v1/engine')
 def read_engine():
     return {'engine': ['duckduckgo', 'web_search', 'google_search']}
 
@@ -123,7 +123,7 @@ async def get_top_google_search_result(keyword: Optional[str], top_number: int =
     return google_result_title, google_result_link
 
 
-@app.get('/search/{keyword}')
+@app.get('/api/v1/search/{keyword}')
 async def search(keyword: str):
 
     # encode the keyword with utf-8
