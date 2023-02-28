@@ -1,5 +1,5 @@
 # Use the official Node.js image as the base image
-FROM node:16.3.0-alpine3.11
+FROM node:19-bullseye-slim
 
 # Set the working directory to /app
 WORKDIR /frontend
@@ -13,8 +13,5 @@ RUN npm install
 # Build the application
 RUN npm run build
 
-# Expose port 3000
-EXPOSE 5173
-
 # Start the application
-CMD [ "npm", "serve" ]
+CMD [ "npm", "run", "serve" ]
