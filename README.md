@@ -8,12 +8,7 @@ Homework: Develop a meta-search engine that responds to user queries with combin
 
 - Using input component to get  query
  
-- three search engines: Google, Baidu, DuckDuckGo
-
-## Bonus
-- 送不同 Type 的 Search Engine （Bonus）
-  - Text、Video、Image
-- 串 Chat-GPT （Bonus）
+- three search engines: Google, Web Search, DuckDuckGo
 
 ## Tech stack
 ![Tech stack](./images/tech-stack.png)
@@ -25,13 +20,11 @@ Homework: Develop a meta-search engine that responds to user queries with combin
 ## Project architecture
 ![Project architecture](./images/HW-2-flowchart.png)
 
+## Project Result
+![Search by keyword 'ncku'](./images/wrdu-hw-2-result-1.png)
+![Search by keyword 'chatgpt'](./images/wrdu-hw-2-result-2.png)
 
 # How to run
 1. Clone the repo
-2. Install dependencies
-   - Backend: `pip install -r requirements.txt`
-   - Frontend: `cd frontend/wrdu-hw-2-frontend && npm install`
-3. Run the backend
-   - `uvicorn main:app --reload`
-- 4. Run the frontend
-   - `cd frontend/wrdu-hw-2-frontend && npm dev || npm start`
+2. cd to the repo `cd meta-search`
+3. run `docker-compose up`
