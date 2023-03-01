@@ -21,6 +21,7 @@ Homework: Develop a meta-search engine that responds to user queries with combin
 ![Project architecture](./images/HW-2-flowchart.png)
 
 ## Project Result
+### Demo : http://nero-buslab-docker-desktop.dog-bangus.ts.net:5173/
 ![Search by keyword 'ncku'](./images/wrdu-hw-2-result-1.png)
 ![Search by keyword 'chatgpt'](./images/wrdu-hw-2-result-2.png)
 
