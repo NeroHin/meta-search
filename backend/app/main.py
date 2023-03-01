@@ -14,7 +14,7 @@ import asyncio
 # load the .env file
 load_dotenv()
 
-RAPIDS_API_KEY = os.getenv("RAPIDS_API_KEY")
+RAPID_API_KEY = os.getenv("RAPID_API_KEY")
 GOOGLE_API_KEY = str(os.getenv("GOOGLE_API_KEY"))
 GOOGLE_SEARCH_ENGINE_ID = str(os.getenv("GOOGLE_SEARCH_ENGINE_ID"))
 
@@ -35,9 +35,11 @@ app.add_middleware(
 def read_root():
     return {'Welcome': 'to the search engine API, Author: @NeroHin'}
 
+
 @app.get('/api/v1/engine')
 def read_engine():
     return {'engine': ['duckduckgo', 'web_search', 'google_search']}
+
 
 async def get_top_ddg_result(keyword: Optional[str], top_number: int = 3):
     '''
@@ -72,7 +74,7 @@ async def get_top_web_search_result(keyword: Optional[str], top_number: int = 3)
         "contextualwebsearch-websearch-v1.p.rapidapi.com")
 
     headers = {
-        'X-RapidAPI-Key': f"{ RAPIDS_API_KEY}",
+        'X-RapidAPI-Key': f"{ RAPID_API_KEY}",
         'X-RapidAPI-Host': "contextualwebsearch-websearch-v1.p.rapidapi.com"
     }
 
@@ -94,6 +96,13 @@ async def get_top_web_search_result(keyword: Optional[str], top_number: int = 3)
 
 
 async def get_top_google_search_result(keyword: Optional[str], top_number: int = 3):
+
+    '''
+        input: keyword, top_number
+        process: get top_number of web Google Custion Search
+        output: top_number of Google Custion Search result title and link
+
+    '''
 
     # get the API KEY here: https://developers.google.com/custom-search/v1/overview
     API_KEY = GOOGLE_API_KEY
