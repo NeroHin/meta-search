@@ -8,7 +8,7 @@ Meta-search engine: dispatch the user query to several search engines at the sam
 ![Search by keyword 'chatgpt'](./images/wrdu-hw-2-result-2.png)
 
 ## Project article
-[Medium——【串串 API】搞一個整合式搜尋引擎 — — 使用 FastAPI、React 、Docker 和 RapidAPI 實作 Meta-Search Engine](https://medium.com/@NeroHin/%E4%B8%B2%E4%B8%B2-api-%E6%90%9E%E4%B8%80%E5%80%8B%E6%95%B4%E5%90%88%E5%BC%8F%E6%90%9C%E5%B0%8B%E5%BC%95%E6%93%8E-%E4%BD%BF%E7%94%A8-fastapi-react-docker-%E5%92%8C-rapidapi-%E5%AF%A6%E4%BD%9C-meta-search-engine-543bbbc79f5b)
+[【串串 API】搞一個整合式搜尋引擎 — — 使用 FastAPI、React 、Docker 和 RapidAPI 實作 Meta-Search Engine](https://medium.com/@NeroHin/%E4%B8%B2%E4%B8%B2-api-%E6%90%9E%E4%B8%80%E5%80%8B%E6%95%B4%E5%90%88%E5%BC%8F%E6%90%9C%E5%B0%8B%E5%BC%95%E6%93%8E-%E4%BD%BF%E7%94%A8-fastapi-react-docker-%E5%92%8C-rapidapi-%E5%AF%A6%E4%BD%9C-meta-search-engine-543bbbc79f5b)
 ## Scope
 Homework: Develop a meta-search engine that responds to user queries with combined search results from a few search engines.
 
