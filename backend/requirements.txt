@@ -49,3 +49,5 @@ uvicorn==0.20.0
 wcwidth==0.2.6
 zipp==3.14.0
 python-dotenv==1.0.0
+pytest==7.2.1
+python-dotenv==1.0.0
