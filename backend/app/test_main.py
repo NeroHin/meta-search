@@ -36,7 +36,7 @@ def test_read_doc():
     '''
         Description: test the doc path
         Request: api_path/v1/doc
-        Response: 200, json
+        Response: 200, True
     '''
     response = client.get("/docs")
     assert response.status_code == 200
@@ -48,7 +48,7 @@ def test_read_search():
     '''
         Description: test the search path
         Request: api_path/v1/search/{ search_keyword }
-        Response: 200, json
+        Response: 200, True
     '''
     response = client.get("/api/v1/search/ncku")
 
