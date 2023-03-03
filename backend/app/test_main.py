@@ -1,9 +1,8 @@
-from fastapi.testclient import TestClient
-import sys,os
-sys.path.append(os.getcwd())
-
 from .main import app
-
+from fastapi.testclient import TestClient
+import sys
+import os
+sys.path.append(os.getcwd())
 
 
 client = TestClient(app)
@@ -31,7 +30,8 @@ def test_read_engine():
     assert response.status_code == 200
     assert response.json() == {"engine": [
         "duckduckgo", "web_search", "google_search"]}
-    
+
+
 def test_read_doc():
     '''
         Description: test the doc path
@@ -43,6 +43,7 @@ def test_read_doc():
     # test doc is not empty
     assert response is not None
 
+
 def test_read_search():
     '''
         Description: test the search path
@@ -50,7 +51,7 @@ def test_read_search():
         Response: 200, json
     '''
     response = client.get("/api/v1/search/ncku")
-    
+
     assert response.status_code == 200
     # test search result is not empty
     assert response.json() != {}
