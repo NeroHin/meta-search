@@ -33,3 +33,6 @@ Homework: Develop a meta-search engine that responds to user queries with combin
 1. Clone the repo
 2. cd to the repo `cd meta-search`
 3. run `docker-compose up`
+
+# Change log
+- 2023/03/30: 由於 front-end 太醜 + 部署起來不太方便、想試試看 fastapi + pynecone 的組合
